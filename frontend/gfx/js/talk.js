@@ -9,6 +9,11 @@ const redScore = document.querySelector('#red-score')
 const redName = document.querySelector('#red-name')
 const pointContainer = document.querySelector('#point-container')
 
+const tagRed = document.querySelector('#tag-red')
+const tagBlue = document.querySelector('#tag-blue')
+const scoreRed = document.querySelector('#score-red')
+const scoreBlue = document.querySelector('#score-blue')
+
 const tick = async () => {
   const data = await window.LPTE.request({
     meta: {
@@ -19,6 +24,7 @@ const tick = async () => {
   })
 
   if (data.state === 'READY') {
+    displayTags(data.teams)
     displayTeams(data.teams, data.bestOf)
   } else {
     teamsContainer.forEach((t) => {
@@ -29,6 +35,7 @@ const tick = async () => {
 
 const update = (data) => {
   if (data.state === 'READY') {
+    displayTags(data.teams)
     displayTeams(data.teams, data.bestOf)
   } else {
     teamsContainer.forEach((t) => {
@@ -153,4 +160,11 @@ function displayPoints(bestOf, blueTeam, redTeam) {
     setTeamPoints('blue', blueTeam)
     setTeamPoints('red', redTeam)
   }
+}
+
+function displayTags(teams) {
+  tagBlue.textContent = teams.blueTeam.tag
+  tagRed.textContent = teams.redTeam.tag
+  scoreBlue.textContent = teams.blueTeam.score
+  scoreRed.textContent = teams.redTeam.score
 }
