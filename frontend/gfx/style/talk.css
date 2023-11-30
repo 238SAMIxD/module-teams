@@ -108,3 +108,27 @@
 .has-scores #red-tag {
   margin-left: 40px;
 }
+
+#tags {
+  display: flex;
+  justify-content: space-between;
+  width: 1920px;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  color: black;
+  font-size: 150px;
+}
+
+#tags * {
+  width: 400px;
+  text-align: center;
+}
+
+#tag-red {
+  text-align: right;
+}
+
+#tag-blue {
+  text-align: left;
+}
